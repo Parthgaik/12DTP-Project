@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<table>
+<tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+{%for driver in drivers%}
+<tr>
+
+    <td>{{driver [1]}}</td>
+    <td>{{driver [2]}}</td>
+    <td>{{driver [3]}}</td>
+    <td>{{driver [4]}}</td>
+    <td>{{driver [5]}}</td>
+    <td>{{driver [6]}}</td>
+    <td>{{driver [7]}}</td>
+    <td>{{driver [8]}}</td>
+    <td>{{driver [9]}}</td>
+    <td>{{driver [10]}}</td>
+</tr>
+{%endfor%}
+
+</table>
+
+
+
+
+{% endblock %}
+
