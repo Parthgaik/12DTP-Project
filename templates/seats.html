@@ -1,6 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
+<!-- table from w3 schools -->
+<table class="w3-table-all">
+    <tr>
+        <th>did</th>
+        <th>tid</th>
+        <th>Joined</th>
+        <th>Left</th>
+    </tr>
+{% for seat in seat %}
+<tr>
 
-{{seat}}
+    <td>{{seat [1]}}</td>
+    <td>{{seat [2]}}</td>
+    <td>{{seat [3]}}</td>
+    <td>{{seat [4]}}</td>
+  
+</tr>
+{%endfor%}
 
+</table>
 {% endblock %}
