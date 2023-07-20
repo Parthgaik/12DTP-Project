@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-<table>
+<table class="w3-table-all fish">
 <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>DOB</th>
+    <th>Nationality</th>
+    <th>Seasons</th>
+    <th>Pole Positions</th>
+    <th>Drivers Championships</th>
+    <th>Race wins</th>
+    <th>Career points</th>
+    <th>Fastest Laps</th>
+    <th>First entry</th>
 </tr>
 {%for driver in drivers%}
 <tr>
@@ -26,6 +26,7 @@
     <td>{{driver [8]}}</td>
     <td>{{driver [9]}}</td>
     <td>{{driver [10]}}</td>
+  
 </tr>
 {%endfor%}
 
