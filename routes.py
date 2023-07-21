@@ -3,7 +3,7 @@ from flask import Flask,render_template
 import sqlite3
 
 
-app = Flask (__name__)
+app = Flask(__name__)
 
 
 # Home Route
@@ -13,13 +13,15 @@ def home():
 
 
 # Drivers Route
-@app.route('/drivers')
-def drivers():
+@app.route('/all_drivers')
+def all_drivers():
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Drivers")
+    cursor.execute("SELECT id, name FROM Drivers")
     drivers = cursor.fetchall()
-    return render_template("drivers.html", title="Drivers", drivers=drivers)
+    return render_template("all_drivers.html", title="Drivers", drivers=drivers)
+
+
 # Teams Route
 @app.route('/teams')
 def teams():
@@ -39,6 +41,15 @@ def seats():
     seat = cursor.fetchall()
     return render_template("seats.html", title="Seats", seat=seat)
 
+
+@app.route('/drivers/<int:id>')
+def drivers(id):
+    conn = sqlite3.connect("F1.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Drivers WHERE id =?", (id,))
+    driver = cursor.fetchall()
+    return render_template("driver.html", title="Driver", driver=driver)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
