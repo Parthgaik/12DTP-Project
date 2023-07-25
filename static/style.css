@@ -2,3 +2,8 @@ body{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: red;
 }
+
+.header_logo {
+  width:345px;
+}
+
