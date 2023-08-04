@@ -1,6 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
 
-{% for drive in driver %}
-
+<table class="w3-table-all">
+    <tr>
+        <th>Name</th>
+        <th>Date Of Birth</th>
+        <th>Nationality</th>
+        <th>Seasons</th>
+        <th>Pole Positions</th>
+        <th>Drivers Championships</th>
+        <th>Race Wins</th>
+        <th>Career Points</th>
+        <th>Fastest Laps</th>
+        <th>First Entry</th>
+    </tr>
+    <tr>
+        <td><p>{{driver[0][1]}}</p></td>
+        <td><p>{{driver[0][2]}}</p></td>
+        <td><p>{{driver[0][3]}}</p></td>
+        <td><p>{{driver[0][4]}}</p></td>
+        <td><p>{{driver[0][5]}}</p></td>
+        <td><p>{{driver[0][6]}}</p></td>
+        <td><p>{{driver[0][7]}}</p></td>
+        <td><p>{{driver[0][8]}}</p></td>
+        <td><p>{{driver[0][9]}}</p></td>
+        <td><p>{{driver[0][10]}}</p></td>
+    </tr>
+</table>
 {% endblock %}

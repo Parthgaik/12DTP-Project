@@ -2,7 +2,15 @@ from flask import Flask,render_template
 # Importing sqlite3
 import sqlite3
 
+def connect_database(statement):
+    conn = sqlite3.connect("F1.db")
+    cursor = conn.cursor()
+    cursor.execute(statement)
+    results = cursor.fetchall()
+    conn.close()
+    return results
 
+connect_database("SELECT * FROM Teams")
 app = Flask(__name__)
 
 
@@ -15,10 +23,11 @@ def home():
 # Drivers Route
 @app.route('/all_drivers')
 def all_drivers():
+    connect_database("hi")
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, name FROM Drivers")
-    drivers = cursor.fetchall()
+    drivers = connect_database("SELECT id, name FROM Drivers")
     return render_template("all_drivers.html", title="Drivers", drivers=drivers)
 
 
@@ -50,6 +59,10 @@ def drivers(id):
     driver = cursor.fetchall()
     return render_template("driver.html", title="Driver", driver=driver)
     
+@app.route('/teams/<int:id>')
+def team(id):
+    connect_database("SELECT * FROM Teams WHERE id =?", (id,))
+    teams = connect_database
 
 if __name__ == "__main__":
     app.run(debug=True)
