@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="w3-table-all">
+    <tr>
+        <th>Name</th>
+    </tr>
+    {% for team in teams %}
+    <tr>
+    
+        <td><a href="/teams/{{team[0]}}">{{team[1]}}</a></td>
+      
+    </tr>
+{%endfor%}
+</table>
+{% endblock %}
