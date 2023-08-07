@@ -10,7 +10,6 @@ def connect_database(statement):
     conn.close()
     return results
 
-connect_database("SELECT * FROM Teams")
 app = Flask(__name__)
 
 
@@ -23,7 +22,6 @@ def home():
 # Drivers Route
 @app.route('/all_drivers')
 def all_drivers():
-    connect_database("hi")
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, name FROM Drivers")
@@ -61,8 +59,8 @@ def drivers(id):
     
 @app.route('/teams/<int:id>')
 def team(id):
-    connect_database("SELECT * FROM Teams WHERE id =?", (id,))
-    teams = connect_database
+    teams = connect_database(("SELECT * FROM Teams WHERE id =?", (id,)))
+    return render_template("team.html", title="Team", teams=teams)
 
 if __name__ == "__main__":
     app.run(debug=True)
