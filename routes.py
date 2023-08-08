@@ -2,6 +2,7 @@ from flask import Flask,render_template
 # Importing sqlite3
 import sqlite3
 
+
 def connect_single(statement, id):
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
@@ -18,6 +19,8 @@ def connect_multiple(statement):
     results = cursor.fetchall()
     conn.close()
     return results
+
+
 app = Flask(__name__)
 
 
@@ -45,9 +48,9 @@ def teams():
     cursor.execute("SELECT * FROM Teams")
     teams = cursor.fetchall()
     return render_template("teams.html", title="Teams", teams=teams)
+
+
 # Seats Route
-
-
 @app.route('/seats')
 def seats():
     conn = sqlite3.connect("F1.db")
@@ -65,9 +68,12 @@ def drivers(id):
     driver = cursor.fetchall()
     return render_template("driver.html", title="Driver", driver=driver)
     
+
 @app.route('/teams/<int:id>')
 def team(id):
     teams = connect_single("SELECT * FROM Teams WHERE id =?", (id,))
     return render_template("team.html", title="Team", teams=teams)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
