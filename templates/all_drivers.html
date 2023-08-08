@@ -4,12 +4,13 @@
 <table class="w3-table-all">
     <tr>
         <th>Name</th>
+        <th>Image</th>
     </tr>
     {% for driver in drivers %}
     <tr>
     
         <td><a href="/drivers/{{driver[0]}}">{{driver[1]}}</a></td>
-      
+        <td><img src="/static/images/{{driver[2]}}"></td>
     </tr>
 {%endfor%}
 </table>
