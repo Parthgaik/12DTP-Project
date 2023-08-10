@@ -62,10 +62,7 @@ def seats():
 
 @app.route('/drivers/<int:id>')
 def drivers(id):
-    conn = sqlite3.connect("F1.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Drivers WHERE id =?", (id,))
-    driver = cursor.fetchall()
+    driver = connect_single("SELECT * FROM Drivers WHERE id =?", (id,))
     return render_template("driver.html", title="Driver", driver=driver)
     
 
@@ -73,6 +70,11 @@ def drivers(id):
 def team(id):
     teams = connect_single("SELECT * FROM Teams WHERE id =?", (id,))
     return render_template("team.html", title="Team", teams=teams)
+
+
+@app.route('/signup')
+def signup():
+    return render_template("Signup.html", title="Sign up")
 
 
 if __name__ == "__main__":
