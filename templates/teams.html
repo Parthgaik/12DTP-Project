@@ -4,13 +4,14 @@
 <table class="w3-table-all">
     <tr>
         <th>Name</th>
+        <th></th>
     </tr>
 
 {% for team in teams %}
 <tr>
 
     <td><a href="/teams/{{team[0]}}">{{team[1]}}</a></td>
-  
+    <td><img src="/static/images/{{team[6]}}" class="team_image"></td>
 </tr>
 
 {% endfor %}

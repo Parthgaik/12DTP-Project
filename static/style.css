@@ -11,3 +11,18 @@ body{
   height: 100px;
   width: 100px;
 }
+
+.driver_single_image {
+  height: 200px;
+  width: 200px;
+}
+
+.team_image {
+  height: 100px;
+  width: 150px;
+}
+
+.team_single_image{
+  height: 200px;
+  width: 300px;
+}

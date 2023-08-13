@@ -1,25 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<table class="w3-table-all">
-    <tr>
-        <th>Name</th>
-        <th>Constructors Championships</th>
-        <th>Race Wins</th>
-        <th>Podiums</th>
-        <th>Pole Positions</th>
-        
-    </tr>
-    {% for team in teams %}
-    <tr>
-    
-        <td>{{team[1]}}</td>
-        <td>{{team[2]}}</td>
-        <td>{{team[3]}}</td>
-        <td>{{team[4]}}</td>
-        <td>{{team[5]}}</td>
-      
-    </tr>
-{%endfor%}
-</table>
+
+<h2><b>{{teams[0][1]}}</b></h2>
+<hr>    
+<img src="/static/images/{{teams[0][6]}}" class="team_single_image">
+<p><b>Constructors Championships:</b> {{teams[0][2]}}</p>
+<p><b>Race Wins:</b> {{teams[0][3]}}</p>
+<p><b>Podiums:</b> {{teams[0][4]}}</p>
+<p><b>Pole Positions:</b> {{teams[0][5]}}</p>
+
+
 {% endblock %}
