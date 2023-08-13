@@ -2,8 +2,8 @@ from flask import Flask,render_template
 # Importing sqlite3
 import sqlite3
 
-
-def connect_single(statement, id):
+# Connect database (F1.db), get cursor, execute cursor with statement and id, fetchall() results and return results
+def connect_database_id(statement, id):
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
     cursor.execute(statement, id)
@@ -11,8 +11,8 @@ def connect_single(statement, id):
     conn.close()
     return results
 
-
-def connect_multiple(statement):
+#
+def connect_database(statement):
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
     cursor.execute(statement)
@@ -36,7 +36,7 @@ def all_drivers():
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, name, Image FROM Drivers")
-    drivers = connect_multiple("SELECT id, name, Image FROM Drivers")
+    drivers = connect_database("SELECT id, name, Image FROM Drivers")
     return render_template("all_drivers.html", title="Drivers", drivers=drivers)
 
 
@@ -62,13 +62,13 @@ def seats():
 
 @app.route('/drivers/<int:id>')
 def drivers(id):
-    driver = connect_single("SELECT * FROM Drivers WHERE id =?", (id,))
+    driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
     return render_template("driver.html", title="Driver", driver=driver)
     
 
 @app.route('/teams/<int:id>')
 def team(id):
-    teams = connect_single("SELECT * FROM Teams WHERE id =?", (id,))
+    teams = connect_database_id("SELECT * FROM Teams WHERE id =?", (id,))
     return render_template("team.html", title="Team", teams=teams)
 
 
