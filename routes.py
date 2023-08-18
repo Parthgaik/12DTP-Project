@@ -1,10 +1,9 @@
-#importing flask, and render template
-from flask import Flask,render_template
+# Importing flask, and render template
+from flask import Flask, render_template
 # Importing sqlite3
 import sqlite3
 
 app = Flask(__name__)
-
 
 
 # Connect database (F1.db), get cursor, execute cursor with statement and id, fetchall() results and return results
@@ -16,6 +15,7 @@ def connect_database_id(statement, id):
     conn.close()
     return results
 
+
 # Connects the databse and then executes the statement, fetches all the results, closes the connection and then returns the values from the results.
 def connect_database(statement):
     conn = sqlite3.connect("F1.db")
@@ -24,6 +24,7 @@ def connect_database(statement):
     results = cursor.fetchall()
     conn.close()
     return results
+
 
 # Home Route, takes the user to the home page
 @app.route('/')
@@ -51,19 +52,19 @@ def seats():
     seat = connect_database("SELECT * FROM Seat")
     return render_template("seats.html", title="Seats", seat=seat)
 
+
 # Driver route, gets a specific driver's entry with the given id, then renders driver.html
 @app.route('/drivers/<int:id>')
 def driver(id):
     driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
     return render_template("driver.html", title="Driver", driver=driver)
-     
+
+
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
 @app.route('/teams/<int:id>')
 def team(id):
     teams = connect_database_id("SELECT * FROM Teams WHERE id =?", (id,))
     return render_template("team.html", title="Team", teams=teams)
-
-
 
 
 if __name__ == "__main__":
