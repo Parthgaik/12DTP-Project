@@ -56,7 +56,17 @@ def seats():
 # Driver route, gets a specific driver's entry with the given id, then renders driver.html
 @app.route('/drivers/<int:id>')
 def driver(id):
+    seats = connect_database_id("SELECT * FROM Seat WHERE did = ?", (id,))
     driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
+    print(seats)
+    ordered_entries = []
+    for i in range(len(seats)):
+        ordered_entries.append((int(seats[i][2])), i)
+    ordered_entries.sort()
+    print(ordered_entries)
+    for i in seats:
+        team = connect_database_id("SELECT * FROM Teams WHERE id =?", (i[1],))
+
     return render_template("driver.html", title="Driver", driver=driver)
 
 
