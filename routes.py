@@ -6,6 +6,10 @@ import sqlite3
 app = Flask(__name__)
 
 
+def seat_sort(seat):
+    return seat[2]
+
+
 # Connect database (F1.db), get cursor, execute cursor with statement and id, fetchall() results and return results
 def connect_database_id(statement, id):
     conn = sqlite3.connect("F1.db")
@@ -58,16 +62,22 @@ def seats():
 def driver(id):
     seats = connect_database_id("SELECT * FROM Seat WHERE did = ?", (id,))
     driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
-    print(seats)
-    ordered_entries = []
+    # Initial sort
+    seats.sort(key=seat_sort)
+    # Sorts the information again and checks for when the driver has left and come back to a new team on the same year
+    if len(seats) >= 2:
+        last_num = seats[0][2]
+        for i in range(1, len(seats)):
+            if last_num == seats[i][2]:
+                if seats[i-1][3] is None:
+                    seats[i], seats[i-1] = seats[i-1], seats[i]
+            last_num = seats[i][2]
+    # Merges both the name and image of the associated team into the associated tuple of seats
     for i in range(len(seats)):
-        ordered_entries.append((int(seats[i][2])), i)
-    ordered_entries.sort()
-    print(ordered_entries)
-    for i in seats:
-        team = connect_database_id("SELECT * FROM Teams WHERE id =?", (i[1],))
-
-    return render_template("driver.html", title="Driver", driver=driver)
+        team = connect_database_id("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
+        seats[i] += (team[0][0], team[0][1])
+    print(seats)
+    return render_template("driver.html", title="Driver", driver=driver, seats=seats)
 
 
 # Teams route, gets a specific team's entry with the given id, then renders teams.html

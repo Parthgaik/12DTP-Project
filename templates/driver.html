@@ -14,5 +14,21 @@
 <p><b>Career Points:</b> {{driver[0][8]}}</p>
 <p><b>Fastest laps:</b> {{driver[0][9]}}</p>
 <p><b>First Entry:</b> {{driver[0][10]}}</p>
+<br>
+<p><b>Seats:</b></p>
+{% for seat in seats %}
+<p>Team: {{seat[5]}}</p>
+<img src="/static/images/{{seat[6]}}" class="team_image">
+<p>Joined: In the year {{seat[2]}}</p>
+{% if seat[3] != None %}
+<p>Left: In the year {{seat[3]}}</p>
+{% endif %}
+{% if seat[4] %}
+<p>Reserve: Yes</p>
+{% else %}
+<p>Reserve: No</p>
+{% endif %}
+<br>
 
+{% endfor %}
 {% endblock %}
