@@ -3,8 +3,11 @@ body{
   background-color: #e10800;
 }
 
-.header_logo {
-  width:345px;
+
+
+
+.f1_logo {
+  width:200px;
 }
 
 .driver_image {
@@ -26,3 +29,10 @@ body{
   height: 200px;
   width: 300px;
 }
+
+
+
+
+
+/* This is the background colour of my f1 logo which i am keeping unless i need it for future use */
+/* background-color: #e10800; */
