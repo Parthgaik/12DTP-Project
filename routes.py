@@ -6,6 +6,7 @@ import sqlite3
 app = Flask(__name__)
 
 
+# Getting the 'joined' information from seats table to use in driver route to display when the driver joined the team.
 def seat_sort(seat):
     return seat[2]
 
@@ -64,6 +65,7 @@ def driver(id):
     driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
     # Initial sort
     seats.sort(key=seat_sort)
+
     # Sorts the information again and checks for when the driver has left and come back to a new team on the same year
     if len(seats) >= 2:
         last_num = seats[0][2]
