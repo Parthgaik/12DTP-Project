@@ -6,29 +6,34 @@ import sqlite3
 app = Flask(__name__)
 
 
-# Getting the 'joined' information from seats table to use in driver route to display when the driver joined the team.
+# Getting the 'joined' information from seats table to use in driver route to
+# display when the driver joined the team.
 def seat_sort(seat):
     return seat[2]
 
 
-# Connect database (F1.db), get cursor, execute cursor with statement and id, fetchall() results and return results
-def connect_database_id(statement, id):
+# Connect database (F1.db), get cursor, execute cursor with statement and id, 
+# fetchall() results and return results
+def connect_database(statement, id=None):
     conn = sqlite3.connect("F1.db")
     cursor = conn.cursor()
-    cursor.execute(statement, id)
+    if id is not None:
+        cursor.execute(statement, id)
+    else:
+        cursor.execute(statement)
     results = cursor.fetchall()
     conn.close()
     return results
 
 
-# Connects the databse and then executes the statement, fetches all the results, closes the connection and then returns the values from the results.
-def connect_database(statement):
-    conn = sqlite3.connect("F1.db")
-    cursor = conn.cursor()
-    cursor.execute(statement)
-    results = cursor.fetchall()
-    conn.close()
-    return results
+# # Connects the databse and then executes the statement, fetches all the results, closes the connection and then returns the values from the results.
+# def connect_database(statement):
+#     conn = sqlite3.connect("F1.db")
+#     cursor = conn.cursor()
+#     cursor.execute(statement)
+#     results = cursor.fetchall()
+#     conn.close()
+#     return results
 
 
 # Home Route, takes the user to the home page
@@ -61,8 +66,8 @@ def seats():
 # Driver route, gets a specific driver's entry with the given id, then renders driver.html
 @app.route('/drivers/<int:id>')
 def driver(id):
-    seats = connect_database_id("SELECT * FROM Seat WHERE did = ?", (id,))
-    driver = connect_database_id("SELECT * FROM Drivers WHERE id =?", (id,))
+    seats = connect_database("SELECT * FROM Seat WHERE did = ?", (id,))
+    driver = connect_database("SELECT * FROM Drivers WHERE id =?", (id,))
     # Initial sort
     seats.sort(key=seat_sort)
 
@@ -76,7 +81,7 @@ def driver(id):
             last_num = seats[i][2]
     # Merges both the name and image of the associated team into the associated tuple of seats
     for i in range(len(seats)):
-        team = connect_database_id("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
+        team = connect_database("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
         seats[i] += (team[0][0], team[0][1])
     print(seats)
     return render_template("driver.html", title="Driver", driver=driver, seats=seats)
@@ -85,7 +90,7 @@ def driver(id):
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
 @app.route('/teams/<int:id>')
 def team(id):
-    teams = connect_database_id("SELECT * FROM Teams WHERE id =?", (id,))
+    teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
     return render_template("team.html", title="Team", teams=teams)
 
 
