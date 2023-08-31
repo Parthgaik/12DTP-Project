@@ -1,9 +1,21 @@
 # Importing flask, and render template
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 # Importing sqlite3
 import sqlite3
 
 app = Flask(__name__)
+
+
+@app.errorhandler(404)
+
+# Error Function
+def not_found(e):
+  
+# defining function
+  return render_template("404.html", title="Error"), 404
+
+
+
 
 
 # Getting the 'joined' information from seats table to use in driver route to
@@ -53,6 +65,7 @@ def all_drivers():
 @app.route('/teams')
 def teams():
     teams = connect_database("SELECT * FROM Teams")
+    print("hi")
     return render_template("teams.html", title="Teams", teams=teams)
 
 
@@ -68,23 +81,26 @@ def seats():
 def driver(id):
     seats = connect_database("SELECT * FROM Seat WHERE did = ?", (id,))
     driver = connect_database("SELECT * FROM Drivers WHERE id =?", (id,))
-    # Initial sort
-    seats.sort(key=seat_sort)
+    if driver and seats:
+        # Initial sort
+        seats.sort(key=seat_sort)
 
-    # Sorts the information again and checks for when the driver has left and come back to a new team on the same year
-    if len(seats) >= 2:
-        last_num = seats[0][2]
-        for i in range(1, len(seats)):
-            if last_num == seats[i][2]:
-                if seats[i-1][3] is None:
-                    seats[i], seats[i-1] = seats[i-1], seats[i]
-            last_num = seats[i][2]
-    # Merges both the name and image of the associated team into the associated tuple of seats
-    for i in range(len(seats)):
-        team = connect_database("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
-        seats[i] += (team[0][0], team[0][1])
-    print(seats)
-    return render_template("driver.html", title="Driver", driver=driver, seats=seats)
+        # Sorts the information again and checks for when the driver has left and come back to a new team on the same year
+        if len(seats) >= 2:
+            last_num = seats[0][2]
+            for i in range(1, len(seats)):
+                if last_num == seats[i][2]:
+                    if seats[i-1][3] is None:
+                        seats[i], seats[i-1] = seats[i-1], seats[i]
+                last_num = seats[i][2]
+        # Merges both the name and image of the associated team into the associated tuple of seats
+        for i in range(len(seats)):
+            team = connect_database("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
+            seats[i] += (team[0][0], team[0][1])
+        print(seats)
+        return render_template("driver.html", title="Driver", driver=driver, seats=seats)
+    else:
+        abort(404)
 
 
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
