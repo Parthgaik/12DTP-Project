@@ -6,16 +6,11 @@ import sqlite3
 app = Flask(__name__)
 
 
-@app.errorhandler(404)
-
 # Error Function
+@app.errorhandler(404)
 def not_found(e):
-  
-# defining function
-  return render_template("404.html", title="Error"), 404
-
-
-
+    # Defining function
+    return render_template("404.html", title="Error"), 404
 
 
 # Getting the 'joined' information from seats table to use in driver route to
