@@ -1,22 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
 <!-- Table from w3 schools -->
-<table class="w3-table-all">
-    <!-- Table row header names -->
-    <tr>
-        <th>Name</th>
-        <!-- This empty th tag is for showing the image -->
-        <th></th>
-    </tr>
 
-{% for team in teams %}
-<tr>
-<!-- Links to teams/int id then gets the name. -->
-    <td><a href="/teams/{{team[0]}}">{{team[1]}}</a></td>
-    <!-- Goes to image source in static and images and then retrieves the sixth entry which is image and gets the class from css -->
-    <td><img src="/static/images/{{team[6]}}" class="team_image"></td>
-</tr>
 
-{% endfor %}
-</table>
+<main class = "row">
+    <ul>
+        {% for team in teams %}
+        <li>
+            <a href="/teams/{{team[0]}}" class = "hover no_hover"><img src="/static/images/{{team[6]}}" class="team_image">
+                <span class = "">{{team[1]}}</span>
+            
+            </a>
+            
+        </li>
+        {%endfor%}
+    </ul>
+</main>
 {% endblock %}

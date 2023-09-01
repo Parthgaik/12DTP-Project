@@ -1,19 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<table class="w3-table-all">
-    <tr>
-        <th>Name</th>
-        <th></th>
-    </tr>
-    {% for driver in drivers %}
-    <tr>
-        <!-- Takes the id of the driver, sends the id to the route /drivers/<int:id> and then gets all the information from the driver table in the databse, and displays in driver.html -->
-        <td><a href="/drivers/{{driver[0]}}">{{driver[1]}}</a></td>
-        <!-- Shows the image of the specific driver by getting the drivers image link in the databse and displaying it in driver.html -->
-        <td><img src="/static/images/{{driver[2]}}" class="driver_image"></td>
-
-    </tr>
-{%endfor%}
-</table>
+<main class = "row">
+    <ul>
+        {% for driver in drivers %}
+        <li>
+            <a href="/drivers/{{driver[0]}}" class = "hover no_hover"><img src="/static/images/{{driver[2]}}" class="driver_image">
+                <span class = "">{{driver[1]}}</span>
+            
+            </a>
+            
+        </li>
+        {%endfor%}
+    </ul>
+</main>
 {% endblock %}
