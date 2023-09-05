@@ -19,15 +19,22 @@ def seat_sort(seat):
     return seat[2]
 
 
-# Connect database (F1.db), get cursor, execute cursor with statement and id, 
+# Connect database (F1.db), get cursor, execute cursor with statement and id,
 # fetchall() results and return results
 def connect_database(statement, id=None):
+    # Connects my F1 Database with sqlite3 and stores as name conn
     conn = sqlite3.connect("F1.db")
+    # Connection creates cursor, and stored as name cursor
     cursor = conn.cursor()
+
+    # If the function recieves an id execute (statement, id), else execute (statement)
+    # This if function is here when we are trying to find one thing or many things,
+    # for example when clicking drivers, it doesnt take a specific id whereas when clicking on a driver it does
     if id is not None:
         cursor.execute(statement, id)
     else:
         cursor.execute(statement)
+    # Get every result, then close connection
     results = cursor.fetchall()
     conn.close()
     return results

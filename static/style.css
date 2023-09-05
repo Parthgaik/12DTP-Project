@@ -16,7 +16,7 @@ body{
   width:200px;
 }
 
-.driver_image {
+.driver_image{
   height: 200px;
   width: 200px;
 }
@@ -40,7 +40,7 @@ body{
     border: 2px solid rgb(255, 3, 3);
     border-radius: 12px;
     box-align: center;
-    font-size: x-large;
+    font-size: large;
 }
 
 
