@@ -23,27 +23,19 @@ body{
 
 .hover{
   background-color: #e67b51; 
-  border: none;
-  color: rgb(255, 3, 3);
+  border: 2px solid rgb(255, 3, 3);
+  color: rgb(0, 0, 0);
   padding: 39px 67px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: larger;
   margin: 4px 20px;
   transition-duration: 0.4s;
   cursor: pointer;
+  box-align: center;
+  border-radius: 12px
 }
-
-.no_hover {
-    color: black; 
-    border: 2px solid rgb(255, 3, 3);
-    border-radius: 12px;
-    box-align: center;
-    font-size: large;
-}
-
-
 
 
 
