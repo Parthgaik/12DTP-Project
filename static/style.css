@@ -16,6 +16,11 @@ body{
   width:200px;
 }
 
+.homepage{
+  background-image: url(/static/images/F1_home_blured.JPG);
+  background-size: cover;
+}
+
 .driver_image{
   height: 200px;
   width: 200px;
@@ -26,15 +31,13 @@ body{
   border: 2px solid rgb(255, 3, 3);
   color: rgb(0, 0, 0);
   padding: 39px 67px;
-  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: larger;
   margin: 4px 20px;
   transition-duration: 0.4s;
   cursor: pointer;
-  box-align: center;
-  border-radius: 12px
+  border-radius: 12px;
 }
 
 
@@ -63,7 +66,9 @@ body{
     padding:  0 10px;
 }
 
-
+.nav{
+  align-items: center;
+}
 
 
 .driver_single_image {

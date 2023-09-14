@@ -53,7 +53,7 @@ def connect_database(statement, id=None):
 # Home Route, takes the user to the home page
 @app.route('/')
 def home():
-    return render_template("home.html", title="Home")
+    return render_template("home.html", title="Home", pagename = "homepage")
 
 
 # Drivers Route, gets the id, name and image from drivers and delivers it to the all_drivers.html
