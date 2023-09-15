@@ -15,6 +15,7 @@ def not_found(e):
 
 # Getting the 'joined' information from seats table to use in driver route to
 # display when the driver joined the team.
+#hello
 def seat_sort(seat):
     return seat[2]
 
