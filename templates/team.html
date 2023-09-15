@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-
-
-<h2><b>{{teams[0][1]}}</b></h2>
-<hr>    
-<img src="/static/images/{{teams[0][6]}}" class="team_single_image">
-<p><b>Constructors Championships:</b> {{teams[0][2]}}</p>
-<p><b>Race Wins:</b> {{teams[0][3]}}</p>
-<p><b>Podiums:</b> {{teams[0][4]}}</p>
-<p><b>Pole Positions:</b> {{teams[0][5]}}</p>
+<body>
+    <img src="/static/images/{{teams[0][6]}}"> 
+<div class = "team_container">
+    <h2><b>{{teams[0][1]}}</b></h2>  
+    <p><b>Constructors Championships:</b> {{teams[0][2]}}</p>
+    <p><b>Race Wins:</b> {{teams[0][3]}}</p>
+    <p><b>Podiums:</b> {{teams[0][4]}}</p>
+    <p><b>Pole Positions:</b> {{teams[0][5]}}</p>
+</div>
+</body>
 
 
 {% endblock %}

@@ -8,17 +8,23 @@ body{
   font-family: 'Titillium Web', sans-serif;
 }
 
+.f1_logo{
+  width:200px;
+}
+
 .alignment{
   text-align: center;
 }
 
-.f1_logo {
-  width:200px;
-}
 
 .homepage{
   background-image: url(/static/images/F1_home_blured.JPG);
-  background-size: cover;
+  background-size:cover;
+}
+
+.all_drivers_page{
+  background-image: url(/static/images/f1blacklogo.jpg);
+  background-size:cover;
 }
 
 .driver_image{
@@ -51,6 +57,7 @@ body{
    
 }
 
+
 .row ul{
     display: flex;
     flex-wrap: wrap;
@@ -66,10 +73,6 @@ body{
     padding:  0 10px;
 }
 
-.nav{
-  align-items: center;
-}
-
 
 .driver_single_image {
   height: 200px;
@@ -82,11 +85,20 @@ body{
 }
 
 .team_single_image{
-  height: 200px;
-  width: 300px;
+  background-image: url(/static/images/f1blacklogo.jpg);
+  background-size:cover ;
+  
 }
 
+.class{
+  background-image: url(/static/images/Alex\ Albon.avif);
+  background-size: cover;
+}
 
+.all_teams{
+  background-image: url(/static/images/f1blacklogo.jpg);
+  background-size: cover;
+}
 
 
 

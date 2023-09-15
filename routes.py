@@ -60,15 +60,15 @@ def home():
 @app.route('/all_drivers')
 def all_drivers():
     drivers = connect_database("SELECT id, name, Image FROM Drivers")
-    return render_template("all_drivers.html", title="Drivers", drivers=drivers)
+    return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename = "all_drivers_page")
 
 
 # Teams Route, gets everything from teams and then delivers it to the teams.html
-@app.route('/teams')
+@app.route('/all_teams')
 def teams():
-    teams = connect_database("SELECT * FROM Teams")
+    all_teams = connect_database("SELECT * FROM Teams")
     print("hi")
-    return render_template("teams.html", title="Teams", teams=teams)
+    return render_template("teams.html", title="Teams", all_teams=all_teams, pagename="all_teams")
 
 
 # Seats Route, gets all everythig from seats and then delivers it to the seats html
@@ -109,7 +109,7 @@ def driver(id):
 @app.route('/teams/<int:id>')
 def team(id):
     teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
-    return render_template("team.html", title="Team", teams=teams)
+    return render_template("team.html", title="Team", teams=teams, pagename = "team_single_image")
 
 
 if __name__ == "__main__":

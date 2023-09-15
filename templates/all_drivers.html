@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<main class = "row">
-    <ul>
-        {% for driver in drivers %}
-        <li>
-            <a href="/drivers/{{driver[0]}}" class = "hover no_hover"><img src="/static/images/{{driver[2]}}" class="driver_image">
-                <br>
-                <span class = "">{{driver[1]}}</span>
-            
-            </a>
-            
-        </li>
-        {%endfor%}
-    </ul>
-</main>
+<body class="background_image">
+
+    <main class = "row">
+        <ul>
+            {% for driver in drivers %}
+            <li>
+                <a href="/drivers/{{driver[0]}}" class = "hover no_hover"><img src="/static/images/{{driver[2]}}" class="driver_image">
+                    <br>
+                    <span class = "">{{driver[1]}}</span>
+                
+                </a>
+                
+            </li>
+            {%endfor%}
+        </ul>
+    </main>
+
+</body>
+
 {% endblock %}
