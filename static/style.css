@@ -34,6 +34,7 @@ body{
 
 .hover{
   background-color: #e67b51; 
+  /* background colour Previous: #e67b51 */
   border: 2px solid rgb(255, 3, 3);
   color: rgb(0, 0, 0);
   padding: 39px 67px;

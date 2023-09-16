@@ -1,4 +1,4 @@
-# Importing flask, and render template
+# Importing flask, render template and abort
 from flask import Flask, render_template, abort
 # Importing sqlite3
 import sqlite3
@@ -50,11 +50,12 @@ def connect_database(statement, id=None):
 #     conn.close()
 #     return results
 
+# NANDINI IS CUTE
 
 # Home Route, takes the user to the home page
 @app.route('/')
 def home():
-    return render_template("home.html", title="Home", pagename = "homepage")
+    return render_template("home.html", title="Home", pagename="homepage")
 
 
 # Drivers Route, gets the id, name and image from drivers and delivers it to the all_drivers.html
@@ -109,8 +110,11 @@ def driver(id):
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
 @app.route('/teams/<int:id>')
 def team(id):
-    teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
-    return render_template("team.html", title="Team", teams=teams, pagename = "team_single_image")
+    if team:
+        teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
+        return render_template("team.html", title="Team", teams=teams, pagename="team_single_image")
+    else:
+        abort(404)
 
 
 if __name__ == "__main__":
