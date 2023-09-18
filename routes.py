@@ -68,7 +68,6 @@ def all_drivers():
 @app.route('/all_teams')
 def teams():
     all_teams = connect_database("SELECT * FROM Teams")
-    print("hi")
     return render_template("teams.html", title="Teams", all_teams=all_teams, pagename="all_teams")
 
 
@@ -110,7 +109,10 @@ def driver(id):
 @app.route('/teams/<int:id>')
 def team(id):
     teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
-    return render_template("team.html", title="Team", teams=teams, pagename = "team_single_image")
+    if teams:
+        return render_template("team.html", title="Team", teams=teams, pagename = "team_single_image")
+    else:
+        abort(404)
 
 
 if __name__ == "__main__":
