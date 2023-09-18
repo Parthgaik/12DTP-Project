@@ -61,6 +61,7 @@ def home():
 @app.route('/all_drivers')
 def all_drivers():
     drivers = connect_database("SELECT id, name, Image FROM Drivers")
+    print(drivers, drivers[0])
     return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename = "all_drivers_page")
 
 
