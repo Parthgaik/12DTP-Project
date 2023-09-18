@@ -2,19 +2,18 @@
 {% block content %}
 <!-- Table from w3 schools -->
 
-
-<main class = "row">
-    <ul>
-        {% for team in all_teams %}
-        <li>
-            <a href="/teams/{{team[0]}}" class = "hover no_hover"><img src="/static/images/{{team[6]}}" class="team_image">
-                <br>
-                <span class = "">{{team[1]}}</span>
+<body>
+    <div class = "grid-container">
+    
+            {% for team in all_teams %}
             
-            </a>
-            
-        </li>
-        {%endfor%}
-    </ul>
-</main>
-{% endblock %}
+               <div class ="grid-item"> <a href="/teams/{{team[0]}}" class = "hover no_hover"><img src="/static/images/{{team[6]}}" class="team_image">
+                    <br>
+                    <span class = "">{{team[1]}}</span>
+                
+                </a></div>
+                
+            {%endfor%}
+    </main>
+    {% endblock %}
+</body>
