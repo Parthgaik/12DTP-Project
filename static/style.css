@@ -4,13 +4,16 @@ body{
   background-color: #e10800;
 }
 
+
 *{
   font-family: 'Titillium Web', sans-serif;
 }
 
+
 .f1_logo{
   width:200px;
 }
+
 
 .alignment{
   text-align: center;
@@ -22,15 +25,18 @@ body{
   background-size:cover;
 }
 
+
 .all_drivers_page{
   background-image: url(/static/images/f1blacklogo.jpg);
   background-size:cover;
 }
 
+
 .driver_image{
   height: 200px;
   width: 200px;
 }
+
 
 .hover{
   background-color: #e67b51; 
@@ -45,7 +51,6 @@ body{
   cursor: pointer;
   border-radius: 12px;
 }
-
 
 
 .hover:hover {
@@ -66,12 +71,14 @@ body{
     list-style-type: none;
 }
 
+
 .row li {
     text-align: center;
     margin-top: 10px;
     flex: 0 0 calc(33.33% - 20px);
     padding:  0 10px;
 }
+
 
 .grid-container {
   display: grid;
@@ -80,6 +87,7 @@ body{
   align-self: auto;
   
 }
+
 
 /* Grid item styles */
 .grid-item {
@@ -90,15 +98,18 @@ body{
   margin-top: 10px;
 }
 
+
 .driver_single_image {
   height: 200px;
   width: 200px;
 }
 
+
 .team_image {
   height: 200px;
   width: 250px;
 }
+
 
 .team_single_image{
   background-image: url(/static/images/f1blacklogo.jpg);
@@ -106,19 +117,18 @@ body{
   
 }
 
+
 .class{
   background-image: url(/static/images/Alex\ Albon.avif);
   background-size: cover;
 }
+
 
 .all_teams{
   background-image: url(/static/images/f1blacklogo.jpg);
   background-size: cover;
 }
 
-.driver_background{
-  background-image: url(/static/images/f1blacklogo.jpg);
-}
 
 /* .driver_name{
   font-size: 1.7rem;
