@@ -1,4 +1,4 @@
-# Importing flask, and render template
+# Importing Flask, render template and abort from flask
 from flask import Flask, render_template, abort
 # Importing sqlite3
 import sqlite3
@@ -9,13 +9,12 @@ app = Flask(__name__)
 # Error Function
 @app.errorhandler(404)
 def not_found(e):
-    # Defining function
+    # Defining function, taking the user to the 404.html page with title "Error" when an error occurs
     return render_template("404.html", title="Error"), 404
 
 
 # Getting the 'joined' information from seats table to use in driver route to
 # display when the driver joined the team.
-#hello
 def seat_sort(seat):
     return seat[2]
 
@@ -45,9 +44,9 @@ def connect_database(statement, id=None):
 def get_max_driver_id(driver):
     """Execute an SQL query to find the maximum 'id'
     value in the "Drivers" table."""
-    query = "SELECT MAX(id) FROM Drivers" 
+    query = "SELECT MAX(id) FROM Drivers"
     result = connect_database(query)
-        # Check if a valid result was obtained.   
+    # Check if a valid result was obtained.
     if result and result[0][0] is not None:
         # If a valid maximum 'id' value exists, return it.
         return result[0][0]
@@ -55,25 +54,24 @@ def get_max_driver_id(driver):
         # If there are no records in the "Drivers" table, return 0.
         return 0
 
+
 # This function retrieves the maximum 'id' value from the "Teams" table in the database.
+
+
 def get_max_teams_id(teams):
     """Execute an SQL query to find the maximum 'id'
     value in the "Teams" table."""
     query = "SELECT MAX(id) FROM Teams"
     result = connect_database(query)
-  
+
     # Check if a valid result was obtained.
-    
+
     if result and result[0][0] is not None:
         # If a valid maximum 'id' value exists, return it.
         return result[0][0]
     else:
         # If there are no records in the "Teams" table, return 0.
         return 0
-
-
-
-
 
 
 # # Connects the databse and then executes the statement, fetches all the results, closes the connection and then returns the values from the results.
@@ -87,9 +85,11 @@ def get_max_teams_id(teams):
 
 
 # Home Route, takes the user to the home page
+
+
 @app.route('/')
 def home():
-    return render_template("home.html", title="Home", pagename = "homepage")
+    return render_template("home.html", title="Home", pagename="homepage")
 
 
 # Drivers Route, gets the id, name and image from drivers and delivers it to the all_drivers.html
@@ -97,7 +97,7 @@ def home():
 def all_drivers():
     drivers = connect_database("SELECT id, name, Image FROM Drivers")
     print(drivers, drivers[0])
-    return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename = "all_drivers_page")
+    return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename="all_drivers_page")
 
 
 # Teams Route, gets everything from teams and then delivers it to the teams.html
@@ -139,7 +139,7 @@ def driver(id):
             team = connect_database("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
             seats[i] += (team[0][0], team[0][1])
         print(seats)
-        return render_template("driver.html", title="Driver", driver=driver, seats=seats)
+        return render_template("driver.html", title="Driver", driver=driver, seats=seats, pagename="driver_background")
     else:
         abort(404)
 
@@ -152,13 +152,10 @@ def team(id):
         abort(404)
     teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
     if teams:
-        return render_template("team.html", title="Team", teams=teams, pagename = "team_single_image")
+        return render_template("team.html", title="Team", teams=teams, pagename="team_single_image")
     else:
         abort(404)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-

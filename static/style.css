@@ -116,6 +116,9 @@ body{
   background-size: cover;
 }
 
+.driver_background{
+  background-image: url(/static/images/f1blacklogo.jpg);
+}
 
 /* .driver_name{
   font-size: 1.7rem;

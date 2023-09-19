@@ -2,7 +2,7 @@
 
 {% extends "layout.html" %}
 {% block content %}
-
+<body>
 <main class="alignment">
        <!-- Gets the driver by unpacking from list, shows the image and shows all information from db -->
     <h2><b>{{driver[0][1]}}</b></h2>
@@ -38,5 +38,7 @@
 
     {% endfor %}
 </main>
+
+</body>
 {% endblock %}
 
