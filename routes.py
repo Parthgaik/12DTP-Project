@@ -56,8 +56,6 @@ def get_max_driver_id(driver):
 
 
 # This function retrieves the maximum 'id' value from the "Teams" table in the database.
-
-
 def get_max_teams_id(teams):
     """Execute an SQL query to find the maximum 'id'
     value in the "Teams" table."""
@@ -85,8 +83,6 @@ def get_max_teams_id(teams):
 
 
 # Home Route, takes the user to the home page
-
-
 @app.route('/')
 def home():
     return render_template("home.html", title="Home", pagename="homepage")

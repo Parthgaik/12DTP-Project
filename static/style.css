@@ -63,6 +63,7 @@ footer{
   background-repeat: no-repeat;
 }
 
+
 .heading_error{
   max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
   margin: 70px auto 0; /* Center horizontally and add margin at the top */
@@ -70,6 +71,7 @@ footer{
   overflow-wrap: break-word; /* Alternative property for older browsers */
   color: #9A349F;
 }
+
 
 .heading_home{
   max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
@@ -88,7 +90,9 @@ footer{
   word-wrap: break-word; /* Allows long words to be broken and wrap */
   overflow-wrap: break-word; /* Alternative property for older browsers */
 }
-.hover:hover {
+
+
+.hover:hover{
     background-color: rgb(248, 0, 0);
     color: rgb(255, 255, 255);
     font-size: xx-large;
@@ -140,9 +144,11 @@ footer{
   text-combine-upright:center ;
 }
 
+
 .team{
   font-size: x-large
 }
+
 
 .team_image {
   height: 200px;
@@ -167,6 +173,7 @@ footer{
   background-image: url(/static/images/f1blacklogo.jpg);
   background-size: cover;
 }
+
 
 .driver_background{
   background-image: url(/static/images/f1blacklogo.jpg);
