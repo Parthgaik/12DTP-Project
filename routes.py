@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.errorhandler(404)
 def not_found(e):
     # Defining function, taking the user to the 404.html page with title "Error" when an error occurs
-    return render_template("404.html", title="Error"), 404
+    return render_template("404.html", title="Error", pagename="error"), 404
 
 
 # Getting the 'joined' information from seats table to use in driver route to

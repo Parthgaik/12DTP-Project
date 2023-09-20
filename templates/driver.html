@@ -3,20 +3,20 @@
 {% extends "layout.html" %}
 {% block content %}
 <body>
-<main class="alignment">
+<main>
        <!-- Gets the driver by unpacking from list, shows the image and shows all information from db -->
-    <h2><b>{{driver[0][1]}}</b></h2>
+    <h2 class ="row"><b>{{driver[0][1]}}</b></h2>
     <hr>
-    <img src="/static/images/{{driver[0][11]}}" class="driver_single_image">
-    <p><b>Date of Birth:</b> {{driver[0][2]}}</p>
-    <p><b>Nationality:</b> {{driver[0][3]}}</p>
-    <p><b>Seasons:</b> {{driver[0][4]}}</p>
-    <p><b>Pole Positions:</b> {{driver[0][5]}}</p>
-    <p><b>Drivers Championships:</b> {{driver[0][6]}}</p>
-    <p><b>Race Wins:</b> {{driver[0][7]}}</p>
-    <p><b>Career Points:</b> {{driver[0][8]}}</p>
-    <p><b>Fastest laps:</b> {{driver[0][9]}}</p>
-    <p><b>First Entry:</b> {{driver[0][10]}}</p>
+    <img class="driver_single_image" src="/static/images/{{driver[0][11]}}">
+    <p class ="row"><b>Date of Birth:</b> {{driver[0][2]}}</p>
+    <p class ="row"><b>Nationality:</b> {{driver[0][3]}}</p>
+    <p class ="row"><b>Seasons:</b> {{driver[0][4]}}</p>
+    <p class ="row"><b>Pole Positions:</b> {{driver[0][5]}}</p>
+    <p class ="row"><b>Drivers Championships:</b> {{driver[0][6]}}</p>
+    <p class ="row"><b>Race Wins:</b> {{driver[0][7]}}</p>
+    <p class ="row"><b>Career Points:</b> {{driver[0][8]}}</p>
+    <p class ="row"><b>Fastest laps:</b> {{driver[0][9]}}</p>
+    <p class ="row"><b>First Entry:</b> {{driver[0][10]}}</p>
     <br>
 
 
