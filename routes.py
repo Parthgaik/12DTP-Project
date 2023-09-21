@@ -40,12 +40,35 @@ def connect_database(statement, id=None):
     return results
 
 
-# This function retrieves the maximum 'id' value from the "Drivers" table in the database.
-def get_max_driver_id(driver):
+# # This function retrieves the maximum 'id' value from the "Drivers" table in the database.
+# def get_max_driver_id(driver):
+#     """Execute an SQL query to find the maximum 'id'
+#     value in the "Drivers" table."""
+#     query = "SELECT MAX(id) FROM Drivers"
+#     result = connect_database(query)
+#     # Check if a valid result was obtained.
+#     if result and result[0][0] is not None:
+#         # If a valid maximum 'id' value exists, return it.
+#         return result[0][0]
+#     else:
+#         # If there are no records in the "Drivers" table, return 0.
+#         return 0
+
+
+# # This function is the same as above, the only difference is the table name and so i have not commented it.
+# def get_max_teams_id(teams):
+#     query = "SELECT MAX(id) FROM Teams"
+#     result = connect_database(query)
+#     if result and result[0][0] is not None:
+#         return result[0][0]
+#     else:
+#         return 0
+
+def get_max_id():
     """Execute an SQL query to find the maximum 'id'
     value in the "Drivers" table."""
-    query = "SELECT MAX(id) FROM Drivers"
-    result = connect_database(query)
+    query = ("SELECT MAX(id) FROM Drivers")
+    result = connect_database()
     # Check if a valid result was obtained.
     if result and result[0][0] is not None:
         # If a valid maximum 'id' value exists, return it.
@@ -53,24 +76,6 @@ def get_max_driver_id(driver):
     else:
         # If there are no records in the "Drivers" table, return 0.
         return 0
-
-
-# This function retrieves the maximum 'id' value from the "Teams" table in the database.
-def get_max_teams_id(teams):
-    """Execute an SQL query to find the maximum 'id'
-    value in the "Teams" table."""
-    query = "SELECT MAX(id) FROM Teams"
-    result = connect_database(query)
-
-    # Check if a valid result was obtained.
-
-    if result and result[0][0] is not None:
-        # If a valid maximum 'id' value exists, return it.
-        return result[0][0]
-    else:
-        # If there are no records in the "Teams" table, return 0.
-        return 0
-
 
 # # Connects the databse and then executes the statement, fetches all the results, closes the connection and then returns the values from the results.
 # def connect_database(statement):
@@ -113,7 +118,7 @@ def seats():
 # Driver route, gets a specific driver's entry with the given id, then renders driver.html
 @app.route('/drivers/<int:id>')
 def driver(id):
-    max_id = get_max_driver_id("driver")
+    max_id = get_max_id()
     if id > max_id:
         abort(404)
     seats = connect_database("SELECT * FROM Seat WHERE did = ?", (id,))
@@ -143,7 +148,7 @@ def driver(id):
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
 @app.route('/teams/<int:id>')
 def team(id):
-    max_id = get_max_teams_id("teams")
+    max_id = get_max_id()
     if id > max_id:
         abort(404)
     teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
