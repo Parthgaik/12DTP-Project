@@ -26,9 +26,9 @@
 
     <!-- takes the information from seats and displays it onto the drivers page. Orders the information by year joined and shows if the driver is a reserve driver or not in that given year -->
     <div class ="row">
-        <p ><b>Seats:</b></p>
-    {% for seat in seats %}
-    <p >Team: {{seat[5]}}</p>
+        <p><b>Seats:</b></p>
+        {% for seat in seats %}
+        <p>Team: {{seat[5]}}</p>
     </div>
     <img src="/static/images/{{seat[6]}}" class="team_image">
     <div  class ="row">

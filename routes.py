@@ -64,11 +64,10 @@ def connect_database(statement, id=None):
 #     else:
 #         return 0
 
-def get_max_id():
+def get_max_id(table_name):
     """Execute an SQL query to find the maximum 'id'
     value in the "Drivers" table."""
-    query = ("SELECT MAX(id) FROM Drivers")
-    result = connect_database()
+    result = connect_database("SELECT MAX(id) FROM " + table_name)
     # Check if a valid result was obtained.
     if result and result[0][0] is not None:
         # If a valid maximum 'id' value exists, return it.
@@ -98,14 +97,14 @@ def home():
 def all_drivers():
     drivers = connect_database("SELECT id, name, Image FROM Drivers")
     print(drivers, drivers[0])
-    return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename="all_drivers_page")
+    return render_template("all_drivers.html", title="Drivers", drivers=drivers, pagename="background_image")
 
 
 # Teams Route, gets everything from teams and then delivers it to the teams.html
 @app.route('/all_teams')
 def teams():
     all_teams = connect_database("SELECT * FROM Teams")
-    return render_template("teams.html", title="Teams", all_teams=all_teams, pagename="all_teams")
+    return render_template("teams.html", title="Teams", all_teams=all_teams, pagename="background_image")
 
 
 # Seats Route, gets all everythig from seats and then delivers it to the seats html
@@ -118,7 +117,7 @@ def seats():
 # Driver route, gets a specific driver's entry with the given id, then renders driver.html
 @app.route('/drivers/<int:id>')
 def driver(id):
-    max_id = get_max_id()
+    max_id = get_max_id("Drivers")
     if id > max_id:
         abort(404)
     seats = connect_database("SELECT * FROM Seat WHERE did = ?", (id,))
@@ -140,7 +139,7 @@ def driver(id):
             team = connect_database("SELECT name, Image FROM Teams WHERE id =?", (seats[i][1],))
             seats[i] += (team[0][0], team[0][1])
         print(seats)
-        return render_template("driver.html", title="Driver", driver=driver, seats=seats, pagename="driver_background")
+        return render_template("driver.html", title="Driver", driver=driver, seats=seats, pagename="background_image")
     else:
         abort(404)
 
@@ -148,12 +147,12 @@ def driver(id):
 # Teams route, gets a specific team's entry with the given id, then renders teams.html
 @app.route('/teams/<int:id>')
 def team(id):
-    max_id = get_max_id()
+    max_id = get_max_id("Teams")
     if id > max_id:
         abort(404)
     teams = connect_database("SELECT * FROM Teams WHERE id =?", (id,))
     if teams:
-        return render_template("team.html", title="Team", teams=teams, pagename="team_single_image")
+        return render_template("team.html", title="Team", teams=teams, pagename="background_image")
     else:
         abort(404)
 

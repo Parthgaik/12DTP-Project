@@ -2,23 +2,42 @@
 body{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #e10800;
-}
-
-
-*{
   font-family: 'Titillium Web', sans-serif;
 }
 
+
+.error{
+  background-image: url('/static/images/404_not_found_car.jpg');
+  backdrop-filter: blur(0px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+
+.heading_home{
+  max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
+  margin: 20px auto 0; /* Center horizontally and add margin at the top */
+  word-wrap: break-word; /* Allows long words to be broken and wrap */
+  overflow-wrap: break-word; /* Alternative property for older browsers */
+  color:rgb(219, 14, 14)
+}
 
 .homepage{
   background-image: url(/static/images/F1_home_blured.JPG);
   background-size:cover;
 }
 
+.heading_error{
+  max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
+  margin: 70px auto 0; /* Center horizontally and add margin at the top */
+  word-wrap: break-word; /* Allows long words to be broken and wrap */
+  overflow-wrap: break-word; /* Alternative property for older browsers */
+  color: #9A349F;
+}
 
-.all_drivers_page{
+
+.background_image{
   background-image: url(/static/images/f1blacklogo.jpg);
-  background-size:cover;
 }
 
 
@@ -33,6 +52,11 @@ body{
   font-size: x-large;
 }
 
+p{
+  text-align: center;
+  color:red;
+  font-size: x-large;
+}
 
 .hover{
   background-color: #e67b51; 
@@ -46,39 +70,6 @@ body{
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 12px;
-}
-
-footer{
-  margin-top: 40%;
-  padding-top: 45px;
-  position: relative;
-  color: red;
-}
-
-
-.error{
-  background-image: url('/static/images/404_not_found_car.jpg');
-  backdrop-filter: blur(0px);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-
-
-.heading_error{
-  max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
-  margin: 70px auto 0; /* Center horizontally and add margin at the top */
-  word-wrap: break-word; /* Allows long words to be broken and wrap */
-  overflow-wrap: break-word; /* Alternative property for older browsers */
-  color: #9A349F;
-}
-
-
-.heading_home{
-  max-width: 900px; /* Adjust this value to control the maximum width before text wraps */
-  margin: 20px auto 0; /* Center horizontally and add margin at the top */
-  word-wrap: break-word; /* Allows long words to be broken and wrap */
-  overflow-wrap: break-word; /* Alternative property for older browsers */
-  color:rgb(219, 14, 14)
 }
 
 
@@ -102,7 +93,7 @@ footer{
 }
 
 .image img{
-   margin-left:850px;
+   margin-left:650px;
    height: 200px;
    width: 200px;
 }
@@ -125,52 +116,12 @@ footer{
   margin-top: 10px;
 }
 
-
-.driver_single_image {
-  height: 200px;
-  width: 200px;
-  text-combine-upright:center ;
-}
-
-
-.team{
-  font-size: xx-small
-}
-
-
 .team_image {
   height: 200px;
   width: 250px;
 }
 
 
-.team_single_image{
-  background-image: url(/static/images/f1blacklogo.jpg);
-  background-size:cover ;
-  
+footer{
+  color: red;
 }
-
-
-.class{
-  background-image: url(/static/images/Alex\ Albon.avif);
-  background-size: cover;
-}
-
-
-.all_teams{
-  background-image: url(/static/images/f1blacklogo.jpg);
-  background-size: cover;
-}
-
-
-.driver_background{
-  background-image: url(/static/images/f1blacklogo.jpg);
-}
-
-
-/* .driver_name{
-  font-size: 1.7rem;
-} */
-
-/* This is the background colour of my f1 logo which i am keeping unless i need it for future use */
-/* background-color: #e10800; */
