@@ -124,4 +124,7 @@ p{
 
 footer{
   color: red;
+  margin-top: 45%;
+  padding-top: 60px;
+  position: relative;
 }
