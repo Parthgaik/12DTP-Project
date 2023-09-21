@@ -29,8 +29,7 @@ body{
 
 .row{
   text-align: center;
-  border: 1px solid white;
-  background-color: white;
+  color:red;
   font-size: x-large;
 }
 
@@ -53,6 +52,7 @@ footer{
   margin-top: 40%;
   padding-top: 45px;
   position: relative;
+  color: red;
 }
 
 
@@ -101,23 +101,11 @@ footer{
    
 }
 
-
-.row ul{
-    display: flex;
-    flex-wrap: wrap;
-    font-size: larger;
-    text-align: center;
-    list-style-type: none;
+.image img{
+   margin-left:850px;
+   height: 200px;
+   width: 200px;
 }
-
-
-.row li {
-    text-align: center;
-    margin-top: 10px;
-    flex: 0 0 calc(33.33% - 20px);
-    padding:  0 10px;
-}
-
 
 .grid-container {
   display: grid;
@@ -146,7 +134,7 @@ footer{
 
 
 .team{
-  font-size: x-large
+  font-size: xx-small
 }
 
 
